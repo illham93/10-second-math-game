@@ -1,9 +1,32 @@
 var newQuestion = function() {
-    var number1 = _.random(0,12);
-    var number2 = _.random(0,12);
-    var answer = number1 + number2;
+    switch (_.random(0,3)) {
+        case 0:
+            var number1 = _.random(0,12);
+            var number2 = _.random(0,12);
+            var answer = number1 + number2;
+            $('#operator').html(' + ');      
+            break;  
+        case 1:
+            var number1 = _.random(0,12);
+            var number2 = _.random(0,12);
+            var answer = number1 * number2;
+            $('#operator').html(' x ');
+            break;
+        case 2:
+            var answer = _.random(0,12);
+            var number2 = _.random(0,12);
+            var number1 = number2 + answer;
+            $('#operator').html(' - ');
+            break;
+        case 3:
+            var answer = _.random(0,12);
+            var number2 = _.random(1,12);
+            var number1 = number2 * answer;
+            $('#operator').html(' ÷ ');
+            break;
+    }
+
     $('#number1').html(number1);
-    $('#operator').html(' + ');
     $('#number2').html(number2);
     $('#equals').html(' = ?');
     return answer;
@@ -47,7 +70,7 @@ $(document).ready(function() {
         var plusOne;
         // These things happen if the user enters the right answer
         $('#answerBox').keyup(function() {
-            console.log(answer);
+
             if ($('#answerBox').val() == answer) {
                 console.log('correct');
                 time++;
