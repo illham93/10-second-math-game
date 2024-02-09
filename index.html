@@ -15,17 +15,19 @@
     </head>
     <body>
         <div class="container">
+            <h1 class="mb-4"><strong>10 Second Math Game!</strong></h1>
             <div id="question">
-                <span id="number1"></span><span id="operator"></span><span id="number2"></span>
+                <span id="number1"></span><span id="operator"></span><span id="number2"></span><span id="equals"></span>
             </div>
             <div id="answer">
-                <input id="answerBox">
+                <input class="mb-3" id="answerBox" autocomplete="off">
             </div>
-            <div id="timer">
+            <div class="mb-3" id="timeLeft">Time left: <span id="timer"></span><span id="plusOne"></span>
             </div>
-            <button id="newGame">New Game</button>
+            
+            <div><button class="btn btn-primary mb-3" id="newGame">New Game</button></div>
             <div>
-                Score: <span id="score"></span>
+                Current Score: <span id="score">0</span>
             </div>
             <div>
                 High Score: <span id="highScore"></span>

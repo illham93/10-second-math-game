@@ -3,8 +3,9 @@ var newQuestion = function() {
     var number2 = _.random(0,12);
     var answer = number1 + number2;
     $('#number1').html(number1);
-    $('#operator').html('+');
+    $('#operator').html(' + ');
     $('#number2').html(number2);
+    $('#equals').html(' = ?');
     return answer;
 }
 
@@ -13,6 +14,7 @@ $(document).ready(function() {
 
     // Initialize and display the high score
     var highScore = 0;
+    var timer;
     $('#highScore').html(highScore);
 
     $('#newGame').click(function() {
@@ -25,13 +27,14 @@ $(document).ready(function() {
         $('#timer').html(time);
         $('#score').html(score);
 
+        clearInterval(timer);
         // Start the countdown
-        var timer = setInterval(function () {
+        timer = setInterval(function () {
             if (time > 0) {
                 time--;
                 $('#timer').html(time);
             } else {
-                clearTimeout(timer);
+                clearInterval(timer);
                 alert('Game over!');
                 if (score > highScore) {
                     highScore = score;
@@ -41,6 +44,7 @@ $(document).ready(function() {
             }
         }, 1000);
 
+        var plusOne;
         // These things happen if the user enters the right answer
         $('#answerBox').keyup(function() {
             console.log(answer);
@@ -51,6 +55,12 @@ $(document).ready(function() {
                 $('#score').html(score);
                 $('#answerBox').val('');
                 answer = newQuestion();
+                $('#plusOne').html('+1');
+                clearTimeout(plusOne);
+                plusOne = setTimeout(function () {
+                    $('#plusOne').html('');
+                }, 1000);
+
             }
         });
     });
